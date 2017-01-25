@@ -4,14 +4,16 @@ let React = require("react"),
     Main = require("Main"),
     Weather = require("Weather"),
     About = require("About"),
-    Examples = require("Examples");
+    Examples = require("Examples"),
+    Favourites = require("Favourites");
 
 ReactDOM.render(
     <Router history={hashHistory}>
         <Route path="/" component={Main}>
+            <IndexRoute component={Weather}/>
             <Route path="about" component={About}/>
             <Route path="examples" component={Examples}/>
-            <IndexRoute component={Weather}/>
+            <Route path="favourites" component={Favourites}/>
         </Route>
     </Router>,
     document.getElementById("app")
