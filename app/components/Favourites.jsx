@@ -1,11 +1,9 @@
 let React = require("react");
 
-class Favourites extends React.Component {
-    render() {
-        return (
-            <h2>Favourites component</h2>
-        )
-    }
-}
+const Favourites = () => {
+    return (
+        <h2>Favourites Component</h2>
+    )
+};
 
 module.exports = Favourites;
