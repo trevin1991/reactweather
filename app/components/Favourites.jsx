@@ -2,7 +2,10 @@ let React = require("react");
 
 const Favourites = () => {
     return (
-        <h2>Favourites Component</h2>
+        <div>
+            <h2>Favourites</h2>
+            <p>Welcome to favourites page!</p>
+        </div>
     )
 };
 
