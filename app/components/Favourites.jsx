@@ -3,7 +3,7 @@ let React = require("react");
 const Favourites = () => {
     return (
         <div>
-            <h2>Favourites</h2>
+            <h1 className="page-title text-center">Favourites</h1>
             <p>Welcome to favourites page!</p>
         </div>
     )

@@ -3,7 +3,7 @@ let React = require("react");
 const About = () => {
     return (
         <div>
-            <h1 className="text-center">About</h1>
+            <h1 className="page-title text-center">About</h1>
             <p>This is study application to explore React.js</p>
             <p>For creation I've used</p>
             <ul>
