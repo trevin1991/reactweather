@@ -1,13 +1,15 @@
 let React = require("react"),
     WeatherForm = require("WeatherForm"),
     WeatherMessage = require("WeatherMessage"),
+    ErrorModal = require("ErrorModal"),
     openWeatherMap = require("openWeatherMap");
 
 class Weather extends React.Component {
     constructor() {
         super();
         this.state = {
-            isLoading: false
+            isLoading: false,
+            errorMessage: null
         }
     }
 
@@ -21,8 +23,10 @@ class Weather extends React.Component {
                 temp
             });
         }, (errorMessage) => {
-            self.setState({isLoading: false});
-            alert(errorMessage);
+            self.setState({
+                isLoading: false,
+                errorMessage: errorMessage.message
+            });
         });
     }
 
@@ -34,11 +38,19 @@ class Weather extends React.Component {
                 return (<WeatherMessage location={ this.state.location } temp={ this.state.temp }/>);
         }
 
+        function renderError() {
+            if(this.state.errorMessage !== null)
+                return (
+                    <ErrorModal message={ this.state.errorMessage }/>
+                );
+        }
+
         return (
             <div>
                 <h1 className="text-center">Get Weather</h1>
                 <WeatherForm onSearch={ this.handleSearch.bind(this) }/>
                 {renderMessage.call(this)}
+                {renderError.call(this)}
             </div>
         )
     }

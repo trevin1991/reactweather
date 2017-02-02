@@ -31,6 +31,7 @@ module.exports = {
             Favourites: "app/components/Favourites.jsx",
             WeatherForm: "app/components/WeatherForm.jsx",
             WeatherMessage: "app/components/WeatherMessage.jsx",
+            ErrorModal: "app/components/ErrorModal.jsx",
 
             openWeatherMap: "app/api/openWeatherMap.jsx"
         },
