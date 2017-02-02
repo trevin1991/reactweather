@@ -4,7 +4,12 @@ let React = require("react"),
 class Nav extends React.Component {
     onSearch(e) {
         e.preventDefault();
-        console.warn("Not yet implemented");
+        let location = encodeURIComponent(this.refs.location.value);
+
+        if(location.length) {
+            this.refs.location.value = "";
+            window.location.hash = `#/?location=${location}`;
+        }
     }
 
     render() {
@@ -22,7 +27,7 @@ class Nav extends React.Component {
                 <div className="top-bar-right">
                     <form onSubmit={ this.onSearch.bind(this) }>
                         <ul className="menu">
-                            <li><input type="search" placeholder="Search weather by city"/></li>
+                            <li><input type="search" placeholder="Search weather by city" ref="location"/></li>
                             <li><button type="submit" className="button">Get Weather</button></li>
                         </ul>
                     </form>

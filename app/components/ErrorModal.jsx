@@ -1,4 +1,6 @@
-let React = require("react");
+let React = require("react"),
+    ReactDOM = require("react-dom"),
+    ReactDOMServer = require("react-dom/server");
 
 class ErrorModal extends React.Component {
     constructor() {
@@ -6,16 +8,8 @@ class ErrorModal extends React.Component {
     }
 
     componentDidMount() {
-        let modal = new Foundation.Reveal($("#error-modal"));
-        modal.open();
-    }
-
-    // componentWillMount
-    // componentDidMount
-
-    render() {
         let { title, message } = this.props;
-        return (
+        let modalMarkup = (
             <div id="error-modal" className="reveal tiny text-center" data-reveal="">
                 <h4>{ title }</h4>
                 <p>{ message }</p>
@@ -23,6 +17,18 @@ class ErrorModal extends React.Component {
                     <button className="button hollow" data-close="">Okay</button>
                 </p>
             </div>
+        );
+
+        let $modal = $(ReactDOMServer.renderToString(modalMarkup));
+        $(ReactDOM.findDOMNode(this)).html($modal);
+
+        let modal = new Foundation.Reveal($("#error-modal"));
+        modal.open();
+    }
+
+    render() {
+        return (
+            <div></div>
         )
     }
 }

@@ -8,8 +8,28 @@ class Weather extends React.Component {
     constructor() {
         super();
         this.state = {
+            location: null,
+            temp: null,
             isLoading: false,
             errorMessage: null
+        }
+    }
+
+    componentDidMount() {
+        let location = this.props.location.query.location;
+
+        if(location && location.length) {
+            this.handleSearch(location);
+            window.location.hash = "#/";
+        }
+    }
+
+    componentWillReceiveProps(newProps) {
+        let location = newProps.location.query.location;
+
+        if(location && location.length) {
+            this.handleSearch(location);
+            window.location.hash = "#/";
         }
     }
 
